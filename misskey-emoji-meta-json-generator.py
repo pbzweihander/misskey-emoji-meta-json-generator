@@ -2,7 +2,7 @@ import os
 import json
 
 
-def main(root_path: str):
+def main(root_path: str, category: str | None):
     output = {
         "emojis": [
             {
@@ -10,7 +10,7 @@ def main(root_path: str):
                 "fileName": filename,
                 "emoji": {
                     "name": filename.rsplit(".", 1)[0],
-                    "category": None,
+                    "category": category,
                     "aliases": [],
                 },
             }
@@ -24,4 +24,4 @@ def main(root_path: str):
 if __name__ == "__main__":
     import sys
 
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
